@@ -2,15 +2,37 @@ from datetime import datetime, timezone
 from sqlalchemy import Column, DateTime, Text, Boolean, BigInteger, ForeignKey, JSON
 from sqlalchemy.orm import relationship
 from .db import Base
+from .config import get_settings
 
 
 def utcnow():
     return datetime.now(timezone.utc)
 
 
+settings = get_settings()
+USE_SCHEMAS = settings.use_schemas
+
+
+def schema_value(name: str) -> str | None:
+    return name if USE_SCHEMAS else None
+
+
+SCHEMA_REF = schema_value("ref")
+SCHEMA_OPS = schema_value("ops")
+SCHEMA_AUDIT = schema_value("audit")
+
+
+def table_args(schema: str | None):
+    return {"schema": schema} if schema else {}
+
+
+def fk(table: str, column: str, schema: str | None):
+    return f"{schema}.{table}.{column}" if schema else f"{table}.{column}"
+
+
 class Airport(Base):
     __tablename__ = "airport"
-    __table_args__ = {"schema": "ref"}
+    __table_args__ = table_args(SCHEMA_REF)
 
     airport_iata = Column(Text, primary_key=True)
     airport_icao = Column(Text)
@@ -25,10 +47,10 @@ class Airport(Base):
 
 class BaseAirportStatus(Base):
     __tablename__ = "base_airport_status"
-    __table_args__ = {"schema": "ops"}
+    __table_args__ = table_args(SCHEMA_OPS)
 
     base_id = Column(BigInteger, primary_key=True, autoincrement=True)
-    airport_iata = Column(Text, ForeignKey("ref.airport.airport_iata"), nullable=False)
+    airport_iata = Column(Text, ForeignKey(fk("airport", "airport_iata", SCHEMA_REF)), nullable=False)
     valid_from = Column(DateTime(timezone=True), nullable=False)
     valid_to = Column(DateTime(timezone=True))
     seasonality = Column(Text, nullable=False, default="PERMANENT")
@@ -44,7 +66,7 @@ class BaseAirportStatus(Base):
 
 class BaseAirportAudit(Base):
     __tablename__ = "base_airport_audit"
-    __table_args__ = {"schema": "audit"}
+    __table_args__ = table_args(SCHEMA_AUDIT)
 
     audit_id = Column(BigInteger, primary_key=True, autoincrement=True)
     base_id = Column(BigInteger)

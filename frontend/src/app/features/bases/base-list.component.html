@@ -1,0 +1,35 @@
+<app-base-filter (filterChange)="onFilterChange($event)"></app-base-filter>
+
+<div class="grid two-col">
+  <div class="card">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h3 style="margin: 0;">Listado de bases</h3>
+      <button class="button secondary" (click)="selected = null">Nueva base</button>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Aeropuerto</th>
+          <th>Inicio</th>
+          <th>Fin</th>
+          <th>Estacionalidad</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let base of bases">
+          <td>{{ base.airport_iata }}</td>
+          <td>{{ base.valid_from | date: 'short' }}</td>
+          <td>{{ base.valid_to ? (base.valid_to | date: 'short') : 'Abierta' }}</td>
+          <td><app-status-badge [text]="base.seasonality"></app-status-badge></td>
+          <td>
+            <button class="button secondary" (click)="onSelect(base)">Editar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <app-base-detail [base]="selected" (save)="onCreateOrUpdate($event)"></app-base-detail>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="card">
+  <form (ngSubmit)="applyFilters()" [formGroup]="form" class="grid three-col">
+    <div>
+      <label for="airport">Aeropuerto</label>
+      <input id="airport" formControlName="airport" placeholder="IATA" />
+    </div>
+    <div>
+      <label for="status">Estado</label>
+      <select id="status" formControlName="status">
+        <option value="">Todos</option>
+        <option value="activo">Activo</option>
+        <option value="futuro">Futuro</option>
+        <option value="cerrado">Cerrado</option>
+      </select>
+    </div>
+    <div>
+      <label for="seasonality">Estacionalidad</label>
+      <select id="seasonality" formControlName="seasonality">
+        <option value="">Todas</option>
+        <option value="PERMANENT">Permanente</option>
+        <option value="SUMMER">Verano</option>
+        <option value="WINTER">Invierno</option>
+        <option value="CUSTOM">Personalizada</option>
+      </select>
+    </div>
+    <div>
+      <button class="button primary" type="submit">Aplicar filtros</button>
+    </div>
+  </form>
+</div>

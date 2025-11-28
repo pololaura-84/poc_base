@@ -1,0 +1,23 @@
+<div class="card">
+  <h3 style="margin-top: 0;">Auditoría</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Aeropuerto</th>
+        <th>Acción</th>
+        <th>Fecha</th>
+        <th>Usuario</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entry of entries">
+        <td>{{ entry.audit_id }}</td>
+        <td>{{ entry.airport_iata }}</td>
+        <td>{{ entry.action }}</td>
+        <td>{{ entry.change_ts | date: 'short' }}</td>
+        <td>{{ entry.changed_by }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

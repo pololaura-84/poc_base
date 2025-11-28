@@ -1,0 +1,17 @@
+<div class="app-shell">
+  <header class="header">
+    <div class="branding">
+      <strong>{{ title }}</strong>
+    </div>
+    <nav>
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <span style="margin: 0 8px">|</span>
+      <a routerLink="/bases" routerLinkActive="active">Bases</a>
+      <span style="margin: 0 8px">|</span>
+      <a routerLink="/auditoria" routerLinkActive="active">Auditoría</a>
+    </nav>
+  </header>
+  <main class="main-container">
+    <router-outlet></router-outlet>
+  </main>
+</div>
