@@ -7,6 +7,10 @@ class Settings(BaseSettings):
         default="postgresql+psycopg2://postgres:postgres@localhost:5432/base_management",
         description="URL de conexión a PostgreSQL",
     )
+    use_schemas: bool = Field(
+        default=True,
+        description="Usa los esquemas ref/ops/audit (poner a False para SQLite o tests simples)",
+    )
     enable_auth: bool = Field(
         default=False,
         description="Permite activar la validación Azure AD; desactivado en la v1 básica",

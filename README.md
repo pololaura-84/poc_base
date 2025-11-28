@@ -12,6 +12,7 @@ Esta versión inicial incluye el esqueleto del backend FastAPI con modelos SQLAl
 2. Instalar dependencias: `pip install -r backend/requirements.txt`.
 3. Variables de entorno (opcional, archivo `.env`):
    - `BASE_APP_DATABASE_URL` (por defecto: `postgresql+psycopg2://postgres:postgres@localhost:5432/base_management`).
+   - `BASE_APP_USE_SCHEMAS` (por defecto `True`; ponlo a `False` para usar SQLite en memoria o sin esquemas anidados).
    - `BASE_APP_ENABLE_AUTH` (por defecto `False`, mantiene Azure AD deshabilitado en esta versión).
    - `BASE_APP_AZURE_TENANT_ID`, `BASE_APP_AZURE_CLIENT_ID`, `BASE_APP_AZURE_AUDIENCE` (preparados para futuras validaciones Azure AD).
 
