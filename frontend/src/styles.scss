@@ -1,0 +1,133 @@
+:root {
+  --volotea-primary: #b31241;
+  --volotea-secondary: #3a3a3a;
+  --volotea-accent: #f4c300;
+  --volotea-surface: #f7f7f7;
+  --volotea-border-radius: 8px;
+  --volotea-spacing: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: var(--volotea-surface);
+  color: #1f1f1f;
+}
+
+a {
+  color: var(--volotea-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 64px 1fr;
+}
+
+.header {
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--volotea-spacing);
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.main-container {
+  padding: var(--volotea-spacing);
+}
+
+.card {
+  background: white;
+  border-radius: var(--volotea-border-radius);
+  padding: var(--volotea-spacing);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.grid {
+  display: grid;
+  gap: var(--volotea-spacing);
+}
+
+.grid.two-col {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.grid.three-col {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #f1f1f1;
+}
+
+.badge.success {
+  background: #e7f6ec;
+  color: #0d7a36;
+}
+
+.badge.warning {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.badge.info {
+  background: #e2ebff;
+  color: #1a47b8;
+}
+
+.button {
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.button.primary {
+  background: var(--volotea-primary);
+  color: white;
+}
+
+.button.secondary {
+  background: #ededed;
+  color: #333;
+}
+
+input,
+select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #d8d8d8;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: inline-block;
+}

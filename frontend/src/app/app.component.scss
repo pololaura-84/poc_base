@@ -1,0 +1,8 @@
+nav a {
+  margin-right: 8px;
+  font-weight: 600;
+}
+
+nav a.active {
+  color: var(--volotea-primary);
+}

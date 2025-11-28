@@ -1,0 +1,40 @@
+<div class="grid three-col" *ngIf="stats">
+  <div class="card">
+    <h3>Bases activas hoy</h3>
+    <p style="font-size: 32px; margin: 0;">{{ stats.activeToday }}</p>
+  </div>
+  <div class="card">
+    <h3>Próximas aperturas</h3>
+    <ul>
+      <li *ngFor="let opening of stats.nextOpenings">{{ opening.airport_iata }} → {{ opening.valid_from | date: 'short' }}</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Próximos cierres</h3>
+    <ul>
+      <li *ngFor="let closing of stats.nextClosings">{{ closing.airport_iata }} → {{ closing.valid_to | date: 'short' }}</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card" *ngIf="stats">
+  <h3>Últimos cambios</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Aeropuerto</th>
+        <th>Acción</th>
+        <th>Fecha</th>
+        <th>Usuario</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let change of stats.recentChanges">
+        <td>{{ change.airport_iata }}</td>
+        <td>{{ change.action }}</td>
+        <td>{{ change.change_ts | date: 'short' }}</td>
+        <td>{{ change.changed_by }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

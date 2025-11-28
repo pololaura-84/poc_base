@@ -1,0 +1,36 @@
+<div class="card">
+  <form [formGroup]="form" (ngSubmit)="submit()" class="grid two-col">
+    <div>
+      <label for="airport_iata">Aeropuerto (IATA)</label>
+      <input id="airport_iata" formControlName="airport_iata" placeholder="Ej: VCE" />
+    </div>
+    <div>
+      <label for="seasonality">Estacionalidad</label>
+      <select id="seasonality" formControlName="seasonality">
+        <option value="PERMANENT">Permanente</option>
+        <option value="SUMMER">Verano</option>
+        <option value="WINTER">Invierno</option>
+        <option value="CUSTOM">Personalizada</option>
+      </select>
+    </div>
+    <div>
+      <label for="valid_from">Inicio</label>
+      <input id="valid_from" type="datetime-local" formControlName="valid_from" />
+    </div>
+    <div>
+      <label for="valid_to">Fin</label>
+      <input id="valid_to" type="datetime-local" formControlName="valid_to" />
+    </div>
+    <div>
+      <label for="season_pattern">Patrón</label>
+      <input id="season_pattern" formControlName="season_pattern" placeholder="S24 / W24" />
+    </div>
+    <div>
+      <label for="notes">Notas</label>
+      <input id="notes" formControlName="notes" placeholder="Observaciones" />
+    </div>
+    <div>
+      <button class="button primary" type="submit">Guardar</button>
+    </div>
+  </form>
+</div>
