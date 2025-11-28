@@ -5,9 +5,6 @@ from . import models
 
 
 def assert_no_overlap(db: Session, airport_iata: str, valid_from: datetime, valid_to: datetime | None, exclude_base_id: int | None = None) -> None:
-    if valid_to is not None and valid_from >= valid_to:
-        raise ValueError("valid_from debe ser anterior a valid_to")
-
     query = select(models.BaseAirportStatus).where(models.BaseAirportStatus.airport_iata == airport_iata)
     if exclude_base_id is not None:
         query = query.where(models.BaseAirportStatus.base_id != exclude_base_id)
